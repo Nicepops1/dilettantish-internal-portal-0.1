@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Нужно поменять</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='layout.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='elements.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='forms.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lists.css') }}">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    </head>
+
+    <body>
+        {% include "components/navbar.html" %}
+
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <footer class="footer">
+            <div class="footer__content">
+                <p>&copy; DevSecOps 2023, МИИГАиК</p>
+            </div>
+        </footer> 
+
+        {% block scripts %}
+        {% endblock %}
+    </body>
+
+</html>

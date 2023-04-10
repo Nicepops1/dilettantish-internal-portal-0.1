@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>База знаний</h1>
+
+    <div class="button-container button-container-right">
+        <a class="button button--add" href="{{ url_for('bp_wiki.wiki_create') }}">Добавить <i class="bi bi-plus"></i></a>
+    </div>
+
+    {% if not wiki_pages %}
+    <div class="message message-info">
+        Пока нет записей в базе знаний. Ты можешь быть первым!
+    </div>
+    {% else %}
+        <div class="wiki">
+            {% for page in wiki_pages %}
+                <div class="wiki__item">
+                    <h2 class="wiki__item__title"><a href="{{ url_for('bp_wiki.wiki_slug', slug=page['slug']) }}">{{ page['name'] }}</a></h2>
+                    <div class="wiki__item__meta">
+                        <a class="wiki__item__author" href="{{ url_for('bp_user.profile_username', username=page['owner']['username']) }}">{{ page['owner']['username'] }}</a>
+                        <p class="wiki__item__date">{{ page['created_at'] }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

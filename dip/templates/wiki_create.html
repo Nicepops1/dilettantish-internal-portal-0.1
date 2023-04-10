@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Создание страницы базы знаний</h1>
+
+    <form class="form form-large" method="POST" enctype="multipart/form-data">
+        <div class="form__group">
+            <label class="form__label" for="title">Заголовок:</label>
+            <input class="form__input" type="text" name="title" id="title">
+        </div>
+        <div class="form__group">
+            <label class="form__label" for="content">Содержимое в markdown:</label>
+            <textarea class="form__input form__input-textarea" name="content" id="content"></textarea>
+        </div>
+        {% if error %}
+            <div class="message message-error">{{ error }}</div>
+        {% endif %}
+        <div class="button-container button-container-right">
+            <button type="submit" class="button button--submit">Сохранить</button>
+        </div>
+    </form>
+
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

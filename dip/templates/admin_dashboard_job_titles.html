@@ -1,0 +1,50 @@
+{% extends "admin_dashboard.html" %}
+
+{% block admin_content %}
+
+<div class="job-titles-list">
+    <h1 class="job-titles-list__title">Должности</h1>
+
+    {% if not job_titles %}
+        <div class="job-titles-list__message job-titles-list__message-info">
+            Пока еще нет созданных должностей
+        </div>
+    {% else %}
+
+        <ul class="job-titles-list__items">
+        {% for jt in job_titles %}
+
+                <li class="job-titles-list__item" id="{{ jt['id'] }}">
+                    <span class="job-titles-list__name" contenteditable="true">{{ jt['title'] }}</span>
+                    <button class="job-titles-list__button job-titles-list__button--delete">Delete</button>
+                </li>
+
+        {% endfor %}
+        </ul>
+
+    {% endif %}
+
+    {% if error %}
+
+        <div class="job-titles-list__message job-titles-list__message-error">
+            {{ error }}
+        </div>
+
+    {% endif %}
+
+        <form class="job-titles-list__form" method="POST">
+            <div class="job-titles-list__form__group">
+                <label class="job-titles-list__form__label" for="username">Название должности:</label>
+                <input class="job-titles-list__form__input" type="text" name="job_title" id="job_title">
+            </div>
+            <button type="submit" class="job-titles-list__button job-titles-list__button--submit">Добавить</button>
+        </form>
+
+        <div class="job-titles-list__temp-message job-titles-list__temp-message-error"></div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/admin_dashboard_jobs.js') }}"></script>
+{% endblock %}

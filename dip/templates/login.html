@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <form class="login-form" method="POST">
+        <h1 class="login-form__header">Добро пожаловать!</h1>
+        {% if error %}
+        <div class="login-form__message-error">
+            <p class="login-form__message-error__text">{{ error }}</p>
+        </div>
+        {% endif %}
+        <label class="login-form__label" for="username">Username</label>
+        <input class="login-form__input" type="text" id="username" name="username" required>
+        <label class="login-form__label" for="password">Password</label>
+        <input class="login-form__input" type="password" id="password" name="password" required>
+        <input class="login-form__button" type="submit" value="Войти">
+      </form>
+
+</div>
+
+{% endblock %}

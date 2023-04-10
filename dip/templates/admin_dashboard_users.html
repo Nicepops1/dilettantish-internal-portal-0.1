@@ -1,0 +1,132 @@
+{% extends "admin_dashboard.html" %}
+
+{% block admin_content %}
+
+<div class="user-list">
+    <h1 class="user-list__title">User List</h1>
+    <div class="user-list__action-add">
+        <button class="user-list__button user-list__button--add">Добавить <i class="bi bi-plus"></i></button>
+    </div>
+    <table class="user-list__table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>ФИО</th>
+                <th>Должность</th>
+                <th>Email</th>
+                <th>Роль</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for user in users %}
+
+            {% if user['role'] == 'admin' %}
+
+            <tr class="user-list__item" id="{{ user['id'] }}">
+                <td class="user-list__field">{{ user['username'] }}</td>
+                <td class="user-list__field">-</td>
+                <td class="user-list__field">-</td>
+                <td class="user-list__field">{{ user['email'] }}</td>
+                <td class="user-list__field">{{ user['role'] }}</td>
+                <td class="user-list__actions">
+                    <button class="user-list__button user-list__button--edit"><i class="bi bi-pencil"></i></button>
+                    <button class="user-list__button user-list__button--delete"><i class="bi bi-trash"></i></button>
+                </td>
+            </tr>
+
+            {% else %}
+
+            <tr class="user-list__item" id="{{ user['id'] }}">
+                <td class="user-list__field">{{ user['username'] }}</td>
+                <td class="user-list__field">{{ user['second_name'] + ' ' + user['first_name'] + ' ' +
+                    user['patronymic'] }}</td>
+                <td class="user-list__field">{{ user['job_title']['title'] }}</td>
+                <td class="user-list__field">{{ user['email'] }}</td>
+                <td class="user-list__field">{{ user['role'] }}</td>
+                <td class="user-list__actions">
+                    <button class="user-list__button user-list__button--edit"><i class="bi bi-pencil"></i></button>
+                    <button class="user-list__button user-list__button--delete"><i class="bi bi-trash"></i></button>
+                </td>
+            </tr>
+
+            {% endif %}
+
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+<div class="modal">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+        <h2 class="modal__title">Edit User</h2>
+        <form id="edit-user-form" class="modal__form" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="id">
+            <div class="modal__form__group">
+                <label class="modal__form__label" for="username">Username:</label>
+                <input class="modal__form__input" type="text" name="username" id="username">
+            </div>
+            <div class="modal__form__group">
+                <label class="modal__form__label" for="first_name">Имя:</label>
+                <input class="modal__form__input" type="text" name="first_name" id="first_name">
+            </div>
+            <div class="modal__form__group">
+                <label class="modal__form__label" for="second_name">Фамилия:</label>
+                <input class="modal__form__input" type="text" name="second_name" id="second_name">
+            </div>
+            <div class="modal__form__group">
+                <label class="modal__form__label" for="patronymic">Отчество:</label>
+                <input class="modal__form__input" type="text" name="patronymic" id="patronymic">
+            </div>
+            <div class="modal__form__group">
+
+                <div class="modal__form__group">
+                    <label class="modal__form__label" for="job_title">Должность:</label>
+                    <select class="modal__form__select" name="job_title" id="job_title">
+                        {% for jt in job_titles %}
+                        <option value="{{ jt['id'] }}">{{ jt['title'] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="modal__form__group">
+                <label class="modal__form__label" for="email">Email:</label>
+                <input class="modal__form__input" type="email" name="email" id="email">
+            </div>
+            <div class="modal__form__group">
+                <label class="modal__form__label" for="phone_number">Номер телефона:</label>
+                <input class="modal__form__input" type="tel" pattern="+7[0-9]{10}" name="phone_number" id="phone_number">
+            </div>
+            <div class="modal__form__group">
+                <label class="modal__form__label" for="photo">Фото:</label>
+                <img class="user-card__img" src="{{ url_for('static', filename='img/profile-picture.jpg') }}" alt="Profile picture" id="photo_preview">
+                <input type="file" id="photo" accept="image/*" style="display:none;" name="photo">
+            </div>
+            <div class="modal__form__group">
+                <label class="modal__form__label" for="role">Роль:</label>
+                <select class="modal__form__select" name="role" id="role">
+                    {% for role in roles %}
+                    <option value="{{ role }}">{{ role }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="modal__form__group">
+                <label class="modal__form__label" for="password">Пароль:</label>
+                <input class="modal__form__input" type="password" name="password" id="password" autocomplete="on">
+            </div>
+            <div class="message message-error"></div>
+            <div class="modal__form__actions">
+                <button type="submit" class="modal__button modal__button--submit">Save</button>
+                <button type="button" class="modal__button modal__button--cancel">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin_dashboard_users.js') }}"></script>
+{% endblock %}

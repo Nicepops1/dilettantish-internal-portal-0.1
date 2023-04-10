@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-sidebar">
+    {% include "components/admin_sidebar.html" %}
+
+    <div class="container">
+        <h1>Панель управления администратора</h1>
+
+        {% block admin_content %}
+        {% endblock %}
+    </div>
+
+</div>
+
+{% endblock %}

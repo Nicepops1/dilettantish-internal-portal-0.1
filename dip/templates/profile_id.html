@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+  <h1>Карточка пользователя</h1>
+
+
+  <div class="user-card">
+    <img class="user-card__img" src="{{ user['photo'] }}" alt="Profile picture">
+    <h2 class="user-card__field-bold">{{ user['full_name'] }}</h2>
+    <p class="user-card__field">{{ user['job_title']['title'] }}</p>
+    <p class="user-card__field">{{ user['email'] }}</p>
+    <p class="user-card__field">{{ user['phone_number'] }}</p>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/user_profile.js') }}"></script>
+{% endblock %}

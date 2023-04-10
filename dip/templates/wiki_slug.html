@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>{{ wiki_page['name'] }}</h1>
+
+    <div class="wiki">
+        <div class="wiki__item__meta">
+            <a class="wiki__item__author" href="{{ url_for('bp_user.profile_username', username=wiki_page['owner']['username']) }}">{{ wiki_page['owner']['username'] }}</a>
+            <p class="wiki__item__date">{{ wiki_page['created_at'] }}</p>
+        </div>
+        <div class="wiki__item">
+            {{ wiki_page['html']|safe }}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

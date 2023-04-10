@@ -1,0 +1,152 @@
+.user-list {
+    max-width: 800px;
+    padding: 20px;
+}
+
+.user-list__title {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.user-list__table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.user-list__table th,
+.user-list__table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.user-list__table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.user-list__item {
+    background-color: #fff;
+}
+
+.user-list__item:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.user-list__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-list__action-add {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+}
+
+.user-list__button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.user-list__button--add {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.user-list__button--edit {
+    background-color: #4caf50;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.user-list__button--delete {
+    background-color: #f44336;
+    color: #fff;
+}
+
+/* Job-titles */
+.job-titles-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.job-titles-list__title {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.job-titles-list__items {
+    list-style: none;
+    padding: 0;
+}
+
+.job-titles-list__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    min-width: 600px;
+    max-width: 800px;
+}
+
+.job-titles-list__name {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.job-titles-list__button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.job-titles-list__button--edit {
+    background-color: #4caf50;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.job-titles-list__button--delete {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.job-titles-list__message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 3px 3px 3px 3px;
+}
+
+.job-titles-list__temp-message {
+    display: none;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 3px 3px 3px 3px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.job-titles-list__message-info {
+    color: #059;
+    background-color: #BEF;
+}
+
+.job-titles-list__message-error {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+.job-titles-list__temp-message-error {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
